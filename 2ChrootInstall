@@ -17,9 +17,6 @@ sed -i "127.0.1.1	MacBookPro.localdomain	MacBookPro" /etc/hosts
 bootctl --path=/boot install
 cp loader.conf /boot/loader/loader.conf
 cp arch.conf /boot/loader/entries/arch.conf
-echo "[archlinuxfr]" >> /etc/pacman.conf
-echo "SigLevel = Never" >> /etc/pacman.conf
-echo "Server = http://repo.archlinux.fr/$arch" >> /etc/pacman.conf
 echo "SUBSYSTEMS=="usb", ATTRS{idVendor}=="05ac", ATTRS{idProduct}=="8406", RUN+="/usr/local/sbin/remove_ignore_usb-device.sh 05ac 8406"" > /etc/udev/rules.d/99-apple_cardreader.rules
 echo "SUBSYSTEMS=="usb", ATTRS{idVendor}=="05ac", ATTRS{idProduct}=="8289", RUN+="/usr/local/sbin/remove_ignore_usb-device.sh 05ac 8289"" > /etc/udev/rules.d/99-apple_broadcom_bcm2046_bluetooth.rules
 echo "SUBSYSTEMS=="usb", ATTRS{idVendor}=="0a5c", ATTRS{idProduct}=="4500", RUN+="/usr/local/sbin/remove_ignore_usb-device.sh 0a5c 4500"" >> /etc/udev/rules.d/99-apple_broadcom_bcm2046_bluetooth.rules
