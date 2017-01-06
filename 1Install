@@ -1,6 +1,4 @@
 #!/usr/bin/bash
-systemctl restart dhcpcd
-sleep 15
 timedatectl set-ntp true
 mkfs.ext4 /dev/sda4
 e2label /dev/sda4 Arch
