@@ -1,0 +1,37 @@
+#!/bin/bash
+pacman -S wget
+#wget loader.conf
+wget https://drive.google.com/uc?id=0Bzxk738g2eBbY3EzbGk1TVhsUENBSkJZVzFtNTVram8wbk1n
+#wget arch.conf
+wget https://drive.google.com/uc?id=0Bzxk738g2eBbMEF4SC11Rl9SOWY2dVBPd05aOFFOLXlQQzYw
+#wget sddm.conf
+wget https://drive.google.com/uc?id=0Bzxk738g2eBbc3lHRVFsXzlrTm5WMXI2dVY2bjl4YU9RaDhn
+#wget 20-intel.conf
+wget https://drive.google.com/uc?id=0Bzxk738g2eBbaWZMWUhJd3BqOFlPRWF6V21SQ212M2xweVVR
+ln -s /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
+hwclock --systohc --utc
+echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+locale-gen
+echo "LANG=en_US.UTF-8" > /etc/locale.conf
+echo "MacBookPro" > /etc/hostname
+sed -i "127.0.1.1	MacBookPro.localdomain	MacBookPro" /etc/hosts
+bootctl --path=/boot install
+cp loader.conf /boot/loader/loader.conf
+cp arch.conf /boot/loader/entries/arch.conf
+echo "[archlinuxfr]" >> /etc/pacman.conf
+echo "SigLevel = Never" >> /etc/pacman.conf
+echo "Server = http://repo.archlinux.fr/$arch" >> /etc/pacman.conf
+echo "SUBSYSTEMS=="usb", ATTRS{idVendor}=="05ac", ATTRS{idProduct}=="8406", RUN+="/usr/local/sbin/remove_ignore_usb-device.sh 05ac 8406"" > /etc/udev/rules.d/99-apple_cardreader.rules
+echo "SUBSYSTEMS=="usb", ATTRS{idVendor}=="05ac", ATTRS{idProduct}=="8289", RUN+="/usr/local/sbin/remove_ignore_usb-device.sh 05ac 8289"" > /etc/udev/rules.d/99-apple_broadcom_bcm2046_bluetooth.rules
+echo "SUBSYSTEMS=="usb", ATTRS{idVendor}=="0a5c", ATTRS{idProduct}=="4500", RUN+="/usr/local/sbin/remove_ignore_usb-device.sh 0a5c 4500"" >> /etc/udev/rules.d/99-apple_broadcom_bcm2046_bluetooth.rules
+echo "options xhci_hcd quirks=0x80" > /etc/modprobe.d/xhci-reset-on-suspend.conf
+echo "coretemp" > /ect/modules
+echo "applesmc" >> /etc/modules
+pacman -S git intel-ucode xf86-input-synaptics xf86-video-intel mesa-libgl vulkan-intel xorg-server xorg-server-utils plasma ttf-dejavu samba kdenetwork-filesharing terminator dolphin sudo firefox plasma-nm network-manager-applet networkmanager cpupower powertop unzip fakeroot
+cp sddm.conf /etc/sddm.conf
+cp 20-intel.conf /etc/X11/xorg.conf.d/20-intel.conf
+groupadd users
+useradd -m -g users -G wheel -s /bin/bash -d /home/bsanders bsanders
+echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
+passwd bsanders
+echo "Now reboot and login"

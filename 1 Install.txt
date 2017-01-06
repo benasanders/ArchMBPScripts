@@ -1,0 +1,15 @@
+#!/bin/bash
+systemctl restart dhcpcd
+sleep 15
+timedatectl set-ntp true
+mkfs.ext4 /dev/sda4
+e2label /dev/sda4 Arch
+mount /dev/sda4 /mnt
+mkdir /mnt/boot
+mount /dev/sda1 /mnt/boot
+pacstrap /mnt base
+genfstab -L /mnt >> /mnt/etc/fstab
+echo "edit fstab to"
+echo "defaults,noatime,discard"
+echo "Then change root and continue to 2"
+echo "arch-chroot /mnt"

@@ -1,0 +1,12 @@
+#!/bin/bash
+#Extra notes
+#upload: 
+cp /boot/loader/loader.conf loader.conf
+cp /boot/loader/entries/arch.conf arch.conf
+cp /etc/sddm.conf sddm.conf
+cp /etc/X11/xorg.conf.d/20-intel.conf 20-intel.conf
+cp /etc/mbpfan.conf mbpfan.conf 
+cp /etc/systemd/system/powertop.service powertop.service
+cp /etc/default/cpupower cpupower
+#check cpupower governer
+#check /ect/modules

@@ -1,0 +1,12 @@
+#!/bin/bash
+systemctl restart dhcpcd
+sleep 15
+git clone https://aur.archlinux.org/package-query.git
+cd package-query
+makepkg -si
+cd ..
+git clone https://aur.archlinux.org/yaourt.git
+cd yaourt
+makepkg -si
+cd ..
+yaourt -S --noconfirm google-chrome bcwc-pcie-git broadcom-wl mbpfan-git spotify pepper-flash ttf-ms-fonts sublime-text-dev 

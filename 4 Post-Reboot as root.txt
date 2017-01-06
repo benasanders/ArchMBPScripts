@@ -1,0 +1,25 @@
+#!/bin/bash
+systemctl restart dhcpcd
+sleep 15
+#wget mbpfan config
+wget https://drive.google.com/uc?id=0Bzxk738g2eBbMjlOaUwwcUpoNEpHakxRRkdDMjk4dnlIektr
+#wget powertop.service
+wget https://drive.google.com/uc?id=0Bzxk738g2eBbdmtjYUFnZ3ZraVV5OGJLQWNuRjN2cE52cXdR
+#wget cpupower
+wget https://drive.google.com/uc?id=0Bzxk738g2eBbdHhieTg3UWhyZFpzYzM3SXFwVlR3c2NJc3lJ
+cp powertop.service /etc/systemd/system/powertop.service
+cp mbpfan.conf /etc/mbpfan.conf
+echo "noarp" >> /etc/dhcpcd.conf
+echo "facetimehd" > /ect/modules
+systemctl enable mbpfan.service
+systemctl disable dhcpcd
+systemctl enable sddm
+systemctl enable cpupower
+systemctl enable powertop.service
+cpupower frequency-set -g powersave
+cp cpupower /etc/default/cpupower
+echo "vm.swappiness=1" >> /etc/sysctl.d/99-sysctl.conf
+sysctl vm.swappiness=1
+echo "options snd_hda_intel power_save=1" >> /etc/modprobe.d/60-snd_hda_intel.conf
+echo "options i915 enable_rc6=1 enable_fbc=1 lvds_downclock=1" >> /etc/modprobe.d/60-i915.conf
+echo "options usbcore autosuspend=1" >> /etc/modprobe.d/usbcore.conf
