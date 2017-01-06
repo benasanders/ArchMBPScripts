@@ -2,11 +2,11 @@
 systemctl restart dhcpcd
 sleep 15
 #wget mbpfan config
-wget https://drive.google.com/uc?id=0Bzxk738g2eBbMjlOaUwwcUpoNEpHakxRRkdDMjk4dnlIektr
+wget https://raw.githubusercontent.com/benasanders/ArchMBPScripts/master/mbpfan.conf
 #wget powertop.service
-wget https://drive.google.com/uc?id=0Bzxk738g2eBbdmtjYUFnZ3ZraVV5OGJLQWNuRjN2cE52cXdR
+wget https://raw.githubusercontent.com/benasanders/ArchMBPScripts/master/powertop.service
 #wget cpupower
-wget https://drive.google.com/uc?id=0Bzxk738g2eBbdHhieTg3UWhyZFpzYzM3SXFwVlR3c2NJc3lJ
+wget https://raw.githubusercontent.com/benasanders/ArchMBPScripts/master/cpupower
 cp powertop.service /etc/systemd/system/powertop.service
 cp mbpfan.conf /etc/mbpfan.conf
 echo "noarp" >> /etc/dhcpcd.conf
