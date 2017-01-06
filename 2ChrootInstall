@@ -6,7 +6,7 @@ curl -O https://raw.githubusercontent.com/benasanders/ArchMBPScripts/master/arch
 #wget sddm.conf
 curl -O https://raw.githubusercontent.com/benasanders/ArchMBPScripts/master/sddm.conf
 #wget 20-intel.conf
-wget https://raw.githubusercontent.com/benasanders/ArchMBPScripts/master/20-intel.conf
+curl -O https://raw.githubusercontent.com/benasanders/ArchMBPScripts/master/20-intel.conf
 ln -s /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
 hwclock --systohc --utc
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
