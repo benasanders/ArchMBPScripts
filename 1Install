@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 systemctl restart dhcpcd
 sleep 15
 timedatectl set-ntp true
