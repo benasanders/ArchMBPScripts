@@ -25,7 +25,7 @@ echo "SUBSYSTEMS=="usb", ATTRS{idVendor}=="0a5c", ATTRS{idProduct}=="4500", RUN+
 echo "options xhci_hcd quirks=0x80" > /etc/modprobe.d/xhci-reset-on-suspend.conf
 echo "coretemp" > /ect/modules
 echo "applesmc" >> /etc/modules
-pacman -Sy git wget intel-ucode xf86-input-synaptics xf86-video-intel mesa-libgl vulkan-intel xorg-server xorg-server-utils plasma ttf-dejavu samba kdenetwork-filesharing terminator dolphin sudo firefox plasma-nm network-manager-applet networkmanager cpupower powertop unzip fakeroot kwallet-pam kwalletmanager
+pacman -Sy git mpv vlc wget intel-ucode xf86-input-synaptics xf86-video-intel mesa-libgl vulkan-intel xorg-server xorg-server-utils plasma ttf-dejavu samba kdenetwork-filesharing terminator dolphin sudo firefox plasma-nm network-manager-applet networkmanager cpupower powertop unzip fakeroot kwallet-pam kwalletmanager
 cp sddm.conf /etc/sddm.conf
 cp 20-intel.conf /etc/X11/xorg.conf.d/20-intel.conf
 groupadd users
