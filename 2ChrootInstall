@@ -32,4 +32,4 @@ groupadd users
 useradd -m -g users -G wheel -s /bin/bash -d /home/bsanders bsanders
 echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
 passwd bsanders
-echo "Now reboot and login"
+echo "Now reboot and login AS YOURSELF"
