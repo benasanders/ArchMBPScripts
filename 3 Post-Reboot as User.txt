@@ -9,4 +9,4 @@ git clone https://aur.archlinux.org/yaourt.git
 cd yaourt
 makepkg -si
 cd ..
-yaourt -S --noconfirm google-chrome bcwc-pcie-git broadcom-wl mbpfan-git spotify pepper-flash ttf-ms-fonts sublime-text-dev 
+yaourt --noconfirm -S google-chrome bcwc-pcie-git broadcom-wl mbpfan-git spotify pepper-flash ttf-ms-fonts sublime-text-dev
