@@ -1,4 +1,6 @@
 #!/bin/bash
+echo "Change the root Password"
+passwd
 #wget loader.conf
 curl -O https://raw.githubusercontent.com/benasanders/ArchMBPScripts/master/loader.conf
 #wget arch.conf
