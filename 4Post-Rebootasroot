@@ -7,6 +7,8 @@ wget https://raw.githubusercontent.com/benasanders/ArchMBPScripts/master/mbpfan.
 wget https://raw.githubusercontent.com/benasanders/ArchMBPScripts/master/powertop.service
 #wget cpupower
 wget https://raw.githubusercontent.com/benasanders/ArchMBPScripts/master/cpupower
+#wget sddm pam file
+https://raw.githubusercontent.com/benasanders/ArchMBPScripts/master/sddm
 cp powertop.service /etc/systemd/system/powertop.service
 cp mbpfan.conf /etc/mbpfan.conf
 echo "noarp" >> /etc/dhcpcd.conf
@@ -18,6 +20,7 @@ systemctl enable cpupower
 systemctl enable powertop.service
 cpupower frequency-set -g powersave
 cp cpupower /etc/default/cpupower
+cp sddm /etc/pam.d/sddm
 echo "vm.swappiness=1" >> /etc/sysctl.d/99-sysctl.conf
 sysctl vm.swappiness=1
 echo "options snd_hda_intel power_save=1" >> /etc/modprobe.d/60-snd_hda_intel.conf
