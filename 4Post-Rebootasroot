@@ -23,3 +23,4 @@ sysctl vm.swappiness=1
 echo "options snd_hda_intel power_save=1" >> /etc/modprobe.d/60-snd_hda_intel.conf
 echo "options i915 enable_rc6=1 enable_fbc=1 lvds_downclock=1" >> /etc/modprobe.d/60-i915.conf
 echo "options usbcore autosuspend=1" >> /etc/modprobe.d/usbcore.conf
+echo "Now reboot to a hopefully working system"
