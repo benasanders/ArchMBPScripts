@@ -29,7 +29,7 @@ echo "coretemp" > /ect/modules
 echo "applesmc" >> /etc/modules
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
 cp mirrorlist /etc/pacman.d/mirrorlist
-pacman -Syu git mpv rdesktop reflector wget kdeconnect ksystemlog intel-ucode xf86-input-synaptics xf86-video-intel libva-intel-driver libvdpau-va-gl mesa-libgl vulkan-intel xorg-server xorg-server-utils plasma ttf-dejavu samba kdenetwork-filesharing terminator dolphin sudo firefox plasma-nm network-manager-applet networkmanager cpupower powertop unzip fakeroot kwallet-pam kwalletmanager
+pacman -Syu git openssh kmail mpv rdesktop reflector wget kdeconnect ksystemlog intel-ucode xf86-input-synaptics xf86-video-intel libva-intel-driver libvdpau-va-gl mesa-libgl vulkan-intel xorg-server xorg-server-utils plasma ttf-dejavu samba kdenetwork-filesharing terminator dolphin sudo firefox plasma-nm network-manager-applet networkmanager cpupower powertop unzip fakeroot kwallet-pam kwalletmanager
 cp sddm.conf /etc/sddm.conf
 cp 20-intel.conf /etc/X11/xorg.conf.d/20-intel.conf
 groupadd users
