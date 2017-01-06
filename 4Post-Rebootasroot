@@ -18,6 +18,7 @@ systemctl disable dhcpcd
 systemctl enable sddm
 systemctl enable cpupower
 systemctl enable powertop.service
+systemctl enable NetworkManager.service
 cp cpupower /etc/default/cpupower
 cp sddm /etc/pam.d/sddm
 echo "vm.swappiness=1" >> /etc/sysctl.d/99-sysctl.conf
