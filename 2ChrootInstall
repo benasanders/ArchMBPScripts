@@ -31,5 +31,6 @@ cp 20-intel.conf /etc/X11/xorg.conf.d/20-intel.conf
 groupadd users
 useradd -m -g users -G wheel -s /bin/bash -d /home/bsanders bsanders
 echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
+echo "Now set your Password"
 passwd bsanders
 echo "Now reboot and login AS YOURSELF"
