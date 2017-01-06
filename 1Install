@@ -9,7 +9,7 @@ e2label /dev/sda4 Arch
 mount /dev/sda4 /mnt
 mkdir /mnt/boot
 mount /dev/sda1 /mnt/boot
-pacstrap /mnt base
+pacstrap /mnt base base-devel
 genfstab -L /mnt >> /mnt/etc/fstab
 echo "edit fstab to"
 echo "defaults,noatime,discard"
