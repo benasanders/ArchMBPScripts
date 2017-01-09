@@ -1,0 +1,40 @@
+#!/bin/bash
+echo "Change the root Password"
+passwd
+#wget loader.conf
+curl -O https://raw.githubusercontent.com/benasanders/ArchMBPScripts/master/loader.conf
+#wget arch.conf
+curl -O https://raw.githubusercontent.com/benasanders/ArchMBPScripts/master/arch.conf
+#wget sddm.conf
+curl -O https://raw.githubusercontent.com/benasanders/ArchMBPScripts/master/sddm.conf
+#wget 20-intel.conf
+curl -O https://raw.githubusercontent.com/benasanders/ArchMBPScripts/master/20-intel.conf
+#wget Mirror List
+curl -O https://raw.githubusercontent.com/benasanders/ArchMBPScripts/master/mirrorlist
+ln -s /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
+hwclock --systohc --utc
+echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+locale-gen
+echo "LANG=en_US.UTF-8" > /etc/locale.conf
+echo "MacBookPro" > /etc/hostname
+sed -i "127.0.1.1	MacBookPro.localdomain	MacBookPro" /etc/hosts
+bootctl --path=/boot install
+cp loader.conf /boot/loader/loader.conf
+cp arch.conf /boot/loader/entries/arch.conf
+echo "SUBSYSTEMS=="usb", ATTRS{idVendor}=="05ac", ATTRS{idProduct}=="8406", RUN+="/usr/local/sbin/remove_ignore_usb-device.sh 05ac 8406"" > /etc/udev/rules.d/99-apple_cardreader.rules
+echo "SUBSYSTEMS=="usb", ATTRS{idVendor}=="05ac", ATTRS{idProduct}=="8289", RUN+="/usr/local/sbin/remove_ignore_usb-device.sh 05ac 8289"" > /etc/udev/rules.d/99-apple_broadcom_bcm2046_bluetooth.rules
+echo "SUBSYSTEMS=="usb", ATTRS{idVendor}=="0a5c", ATTRS{idProduct}=="4500", RUN+="/usr/local/sbin/remove_ignore_usb-device.sh 0a5c 4500"" >> /etc/udev/rules.d/99-apple_broadcom_bcm2046_bluetooth.rules
+echo "options xhci_hcd quirks=0x80" > /etc/modprobe.d/xhci-reset-on-suspend.conf
+echo "coretemp" > /ect/modules
+echo "applesmc" >> /etc/modules
+cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
+cp mirrorlist /etc/pacman.d/mirrorlist
+pacman -Syu git openssh hfsprogs mpv zfs xcursor-premium rdesktop reflector wget kdeconnect ksystemlog intel-ucode xf86-input-synaptics xf86-video-intel libva-intel-driver libvdpau-va-gl mesa-libgl vulkan-intel xorg-server xorg-server-utils plasma ttf-dejavu samba kdenetwork-filesharing terminator dolphin sudo firefox plasma-nm network-manager-applet networkmanager cpupower powertop unzip fakeroot kwallet-pam kwalletmanager
+cp sddm.conf /etc/sddm.conf
+cp 20-intel.conf /etc/X11/xorg.conf.d/20-intel.conf
+groupadd users
+useradd -m -g users -G wheel -s /bin/bash -d /home/bsanders bsanders
+echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
+echo "Now set your Password"
+passwd bsanders
+echo "Now reboot and login AS YOURSELF"

@@ -1,0 +1,13 @@
+#!/bin/bash
+systemctl restart dhcpcd
+sleep 15
+git clone https://aur.archlinux.org/package-query.git
+cd package-query
+makepkg -si
+cd ..
+git clone https://aur.archlinux.org/yaourt.git
+cd yaourt
+makepkg -si
+cd ..
+yaourt --noconfirm -S update-pacman-mirrorlist emojione-color-font atom-editor-bin ttf-mac-fonts  google-chrome bcwc-pcie-dkms broadcom-wl-dkms dkms mbpfan-git spotify pepper-flash ttf-ms-fonts sublime-text remmina-git remmina-plugin-rdesktop
+echo "Now reboot and login AS ROOT"
