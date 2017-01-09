@@ -1,6 +1,15 @@
 #!/bin/bash
+#wget next scripts
+curl -O https://raw.githubusercontent.com/benasanders/ArchMBPScripts/master/3RunAsUser
+curl -O https://raw.githubusercontent.com/benasanders/ArchMBPScripts/master/4RunAsRoot
+#wget vconsole.conf
+curl -O https://raw.githubusercontent.com/benasanders/ArchMBPScripts/master/vconsole.conf
+#wget ter-powerline-v28b
+curl -O https://raw.githubusercontent.com/benasanders/ArchMBPScripts/master/ter-powerline-v28b
 #wget loader.conf
 curl -O https://raw.githubusercontent.com/benasanders/ArchMBPScripts/master/loader.conf
+#wget mkinitcpio.conf
+curl -O https://raw.githubusercontent.com/benasanders/ArchMBPScripts/master/mkinitcpio.conf
 #wget arch.conf
 curl -O https://raw.githubusercontent.com/benasanders/ArchMBPScripts/master/arch.conf
 #wget sddm.conf
