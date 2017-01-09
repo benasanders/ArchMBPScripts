@@ -9,22 +9,39 @@ wget https://raw.githubusercontent.com/benasanders/ArchMBPScripts/master/powerto
 wget https://raw.githubusercontent.com/benasanders/ArchMBPScripts/master/cpupower
 #wget sddm pam file
 wget https://raw.githubusercontent.com/benasanders/ArchMBPScripts/master/sddm
+#wget modules
+
+
+
+#Copy files into place
 cp powertop.service /etc/systemd/system/powertop.service
 cp mbpfan.conf /etc/mbpfan.conf
+cp cpupower /etc/default/cpupower
+cp sddm /etc/pam.d/sddm
+cp modules /ect/modules
+
 echo "noarp" >> /etc/dhcpcd.conf
-echo "facetimehd" >> /ect/modules
+
+#Apply Mac-specific fixes for shit
+echo "SUBSYSTEMS=="usb", ATTRS{idVendor}=="05ac", ATTRS{idProduct}=="8406", RUN+="/usr/local/sbin/remove_ignore_usb-device.sh 05ac 8406"" > /etc/udev/rules.d/99-apple_cardreader.rules
+echo "SUBSYSTEMS=="usb", ATTRS{idVendor}=="05ac", ATTRS{idProduct}=="8289", RUN+="/usr/local/sbin/remove_ignore_usb-device.sh 05ac 8289"" > /etc/udev/rules.d/99-apple_broadcom_bcm2046_bluetooth.rules
+echo "SUBSYSTEMS=="usb", ATTRS{idVendor}=="0a5c", ATTRS{idProduct}=="4500", RUN+="/usr/local/sbin/remove_ignore_usb-device.sh 0a5c 4500"" >> /etc/udev/rules.d/99-apple_broadcom_bcm2046_bluetooth.rules
+echo "options xhci_hcd quirks=0x80" > /etc/modprobe.d/xhci-reset-on-suspend.conf
+echo "options snd_hda_intel power_save=1" >> /etc/modprobe.d/60-snd_hda_intel.conf
+echo "options i915 enable_rc6=1 enable_fbc=1 lvds_downclock=1" >> /etc/modprobe.d/60-i915.conf
+echo "options usbcore autosuspend=1" >> /etc/modprobe.d/usbcore.conf
+
+echo "vm.swappiness=1" >> /etc/sysctl.d/99-sysctl.conf
+
 systemctl enable mbpfan.service
 systemctl disable dhcpcd
 systemctl enable sddm
 systemctl enable cpupower
 systemctl enable powertop.service
 systemctl enable NetworkManager.service
-cp cpupower /etc/default/cpupower
-cp sddm /etc/pam.d/sddm
-echo "vm.swappiness=1" >> /etc/sysctl.d/99-sysctl.conf
+
+
 sysctl vm.swappiness=1
 dkms autoinstall
-echo "options snd_hda_intel power_save=1" >> /etc/modprobe.d/60-snd_hda_intel.conf
-echo "options i915 enable_rc6=1 enable_fbc=1 lvds_downclock=1" >> /etc/modprobe.d/60-i915.conf
-echo "options usbcore autosuspend=1" >> /etc/modprobe.d/usbcore.conf
+
 echo "Now reboot to a hopefully working system"
