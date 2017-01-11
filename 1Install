@@ -14,6 +14,6 @@ mount /dev/sda1 /mnt/boot
 pacstrap /mnt base base-devel
 genfstab -L /mnt >> /mnt/etc/fstab
 echo "edit fstab to"
-echo "defaults,noatime,discard"
+echo "discard,rw,noatime,data=writeback"
 echo "Then change root and continue to 2"
 echo "arch-chroot /mnt"

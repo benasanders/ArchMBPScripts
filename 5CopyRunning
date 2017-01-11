@@ -1,0 +1,15 @@
+cp /etc/vconsole.conf vconsole.conf
+cp /usr/share/kbd/consolefonts/ter-powerline-v28b.psf.gz ter-powerline-v28b.psf.gz
+cp /etc/mkinitcpio.conf mkinitcpio.conf
+cp /etc/sddm.conf sddm.conf
+cp /etc/X11/xorg.conf.d/20-intel.conf 20-intel.conf
+cp /boot/loader/loader.conf loader.conf
+cp /boot/loader/entries/arch.conf arch.conf
+cp /etc/hosts hosts
+cp /etc/pacman.d/mirrorlist mirrorlist
+cp /etc/systemd/system/powertop.service powertop.service
+cp /etc/mbpfan.conf mbpfan.conf
+cp /etc/default/cpupower cpupower
+cp /etc/pam.d/sddm sddm
+cp /etc/modules modules
+cp /etc/rc.local rc.local

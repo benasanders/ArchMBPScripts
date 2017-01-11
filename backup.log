@@ -1,0 +1,10 @@
+#1483998951 Disk /dev/sda - 121 GB / 113 GiB - CHS 14751 255 63
+ 0 : start=       40, size=   409600, Id=00, P
+ 0 : start=   409640, size= 58593744, Id=00, P
+ 0 : start= 59728520, size=  1269536, Id=00, P
+ 0 : start= 60998056, size=175717936, Id=00, P
+#1483998978 Disk /dev/sda - 121 GB / 113 GiB - CHS 14751 255 63
+ 0 : start=       40, size=   409600, Id=00, P
+ 0 : start=   409640, size= 58593744, Id=00, P
+ 0 : start= 59728520, size=  1269536, Id=00, P
+ 0 : start= 60998056, size=175717936, Id=00, P
